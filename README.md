@@ -1,1 +1,1 @@
-# Scripts fro my YouTube video "Understanding Kubernetes Networking. Part 6: Calico Network Policies intro": https://youtu.be/sxB9-td1-F8
+# Scripts fro my YouTube video "Understanding Kubernetes Networking. Part 6: Calico Network Policies intro": https://youtu.be/sxB9-td1-F8. Make sure to change the node names and IP addresses appropiately in the script and yaml files. 
