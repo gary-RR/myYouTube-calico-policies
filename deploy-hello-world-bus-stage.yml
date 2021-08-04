@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products-bus
+  labels:
+    app: products-bus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world-bus
+  template:
+    metadata:
+      labels:
+        app: hello-world-bus
+    spec:
+      serviceAccount: svcpoducts-bus-pilot
+      containers:
+      - image: gcr.io/google-samples/hello-app:1.0
+        name: hello-world
