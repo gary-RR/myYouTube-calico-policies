@@ -1,0 +1,24 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+Metadata:
+  name: cal-allow-ingress-from-svc
+  namespace: products-prod
+Spec:
+  selector:  app == 'products-db'
+  types:  
+  - Egress
+  - Ingress
+  ingress:  
+  - action: Allow
+    protocol: TCP
+    source:    
+      namespaceSelector: projectcalico.org/name in {"products-prod", "products-stage"}    
+      selector: app == "hello-world-bus"
+      serviceAccounts:
+        names: 
+          - svcpoducts-bus-prod
+          - svcpoducts-bus-pilot
+        selector : (env == "pilot")||(env == "prod")     
+    destination:
+      ports:
+      - 8080    

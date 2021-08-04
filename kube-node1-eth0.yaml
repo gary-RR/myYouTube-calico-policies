@@ -1,0 +1,11 @@
+apiVersion: projectcalico.org/v3
+kind: HostEndpoint
+metadata:
+  name: kube-node1-eth0
+  labels:
+    kubernetes-host: ingress
+spec:
+  interfaceName: eth0
+  node: kube-node1
+  expectedIPs:
+  - 10.0.0.200

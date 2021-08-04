@@ -1,0 +1,19 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+Metadata:
+  name: cal-deny-ingress-from-ui
+  namespace: products-prod
+Spec:
+  selector:  app == 'products-db'
+  types:
+  - Ingress
+  - Egress
+  ingress:
+  - action: Log
+    protocol: TCP
+    source:
+      selector: app == 'products-ui'
+  - action: Deny
+    protocol: TCP
+    source:
+      selector: app == 'products-ui'
